@@ -9,6 +9,8 @@ module com.example.librarymanagementsystem {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
+    requires io.github.cdimascio.dotenv.java;
 
     opens com.example.librarymanagementsystem to javafx.fxml;
     exports com.example.librarymanagementsystem;
