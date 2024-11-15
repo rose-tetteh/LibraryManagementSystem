@@ -1,21 +1,22 @@
 package com.example.librarymanagementsystem.utils;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-
-    private static final String URL = "jdbc:postgresql://localhost:5432/libraryManagementSys";
-    private static final String USERNAME = "postgres ";
-    private static final String PASSWORD = "postAdmin";
+    private static final Dotenv dotenv = Dotenv.load();
 
     public static Connection getConnection(){
         try{
-            return DriverManager.getConnection(URL,USERNAME,PASSWORD);
+            String url = dotenv.get("DATABASE_URL");
+            String username = dotenv.get("DATABASE_USERNAME");
+            String password = dotenv.get("DATABASE_PASSWORD");
+
+            return DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException("Failed to connect to database" + e.getMessage());
         }
     }
 }
