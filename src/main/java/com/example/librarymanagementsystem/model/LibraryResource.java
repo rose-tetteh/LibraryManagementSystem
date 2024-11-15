@@ -1,35 +1,64 @@
 package com.example.librarymanagementsystem.model;
 
+import com.example.librarymanagementsystem.enums.ResourceType;
+
 public class LibraryResource {
 
-    private int resourceId;
-    private String title;
-    private ResourceType resourceType;
-    private String author;
-
+    private final int resourceId;
+    private final String title;
+    private final ResourceType resourceType;
+    private final String author;
 
     /**
-     * Instantiates a new Library resource.
+     * The type Builder.
      *
-     * @param title  the title
-     * @param author the author
+     * @param <T> the type parameter
      */
-    public LibraryResource(String title, String author){
-        this.title = title;
-        this.author = author;
+    public abstract static class Builder<T extends Builder<T>>{
+        private int resourceId;
+        private String title;
+        private ResourceType resourceType;
+        private String author;
+
+        public Builder() {}
+
+        public abstract T getThis();
+
+        public T resourceId(int resourceId){
+            this.resourceId = resourceId;
+            return getThis();
+        }
+
+        public T title(String title){
+            this.title = title;
+            return getThis();
+        }
+
+        public T resourceType(ResourceType resourceType){
+            this.resourceType = resourceType;
+            return getThis();
+        }
+
+        public T author(String author){
+            this.author = author;
+            return getThis();
+        }
+
+        public LibraryResource build(){
+            return new LibraryResource(this);
+        }
     }
 
     /**
      * Instantiates a new Library resource.
      *
-     * @param resourceId the resource id
-     * @param title      the title
-     * @param author     the author
+     * @param builder the builder
      */
-    public LibraryResource(int resourceId, String title, String author){
-        this.resourceId = resourceId;
-        this.title = title;
-        this.author = author;
+    protected LibraryResource(Builder<?> builder){
+        this.resourceId = builder.resourceId;
+        this.title = builder.title;
+        this.author = builder.author;
+        this.resourceType = builder.resourceType;
     }
 
     public int getResourceId() {
@@ -40,28 +69,12 @@ public class LibraryResource {
         return title;
     }
 
-    public ResourceType getType() {
+    public ResourceType getResourceType() {
         return resourceType;
-    }
-
-    public void setType(ResourceType resourceType) {
-        this.resourceType = resourceType;
-    }
-
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getAuthor() {
         return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
 }

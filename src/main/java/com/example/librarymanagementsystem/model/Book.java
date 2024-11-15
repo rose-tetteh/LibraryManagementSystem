@@ -1,55 +1,75 @@
 package com.example.librarymanagementsystem.model;
 
+import com.example.librarymanagementsystem.enums.Status;
+
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Book extends LibraryResource{
-    private String genre;
-    private LocalDate publicationDate;
-    private Status statusOfBookAvailability;
-
+    private final String genre;
+    private final LocalDate publicationDate;
+    private final Status statusOfBookAvailability;
 
     /**
-     * Instantiates a new Book.
-     *
-     * @param title           the title
-     * @param author          the author
-     * @param genre           the genre
-     * @param publicationDate the publication date
+     * The type Book builder.
      */
-    public Book(String title, String author, String genre, LocalDate publicationDate) {
-        super(title, author);
-        this.genre = genre;
-        this.publicationDate = publicationDate;
+    public static class BookBuilder extends LibraryResource.Builder<BookBuilder>{
+        private String genre;
+        private LocalDate publicationDate;
+        private Status statusOfBookAvailability;
+
+        public BookBuilder() {}
+
+        @Override
+        public BookBuilder getThis() {
+            return null;
+        }
+
+        public BookBuilder genre(String genre){
+            this.genre = genre;
+            return this;
+        }
+
+        public BookBuilder publicationDate(LocalDate publicationDate){
+            this.publicationDate = publicationDate;
+            return this;
+        }
+
+        public BookBuilder statusOfBookAvailability(Status statusOfBookAvailability){
+            this.statusOfBookAvailability = statusOfBookAvailability;
+            return this;
+        }
+
+        public Book build(){
+            return new Book(this);
+        }
+
     }
 
     /**
      * Instantiates a new Book.
      *
-     * @param resourceId      the resource id
-     * @param title           the title
-     * @param author          the author
-     * @param genre           the genre
-     * @param publicationDate the publication date
+     * @param builder the builder
      */
-    public Book(int resourceId, String title, String author, String genre, LocalDate publicationDate) {
-        super(resourceId, title, author);
-        this.genre = genre;
-        this.publicationDate = publicationDate;
+    public Book(BookBuilder builder) {
+        super(builder);
+        this.genre = builder.genre;
+        this.publicationDate = builder.publicationDate;
+        this.statusOfBookAvailability = builder.statusOfBookAvailability;
     }
 
     public String getGenre() {
         return genre;
     }
 
-    public LocalDate getPublicationDate() {
-        return publicationDate;
+    public Date getPublicationDate() {
+
+        return Date.valueOf(publicationDate);
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public Status getStatusOfBookAvailability() {
+        return statusOfBookAvailability;
     }
 
-    public void setPublicationDate(LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
-    }
+
 }

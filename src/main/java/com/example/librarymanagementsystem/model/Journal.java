@@ -1,48 +1,59 @@
 package com.example.librarymanagementsystem.model;
 
+import com.example.librarymanagementsystem.enums.Status;
+
 import java.time.LocalDate;
 
 /**
  * The type Journal.
  */
 public class Journal extends LibraryResource{
-    private String genre;
-    private int volumeNumber;
-    private LocalDate publicationDate;
-    private Status statusOfJournalAvailability;
+    private final String genre;
+    private final int volumeNumber;
+    private final LocalDate publicationDate;
+    private final Status statusOfJournalAvailability;
 
 
-    /**
-     * Instantiates a new Journal.
-     *
-     * @param title           the title
-     * @param author          the author
-     * @param genre           the genre
-     * @param publicationDate the publication date
-     * @param volumeNumber    the volume number
-     */
-    public Journal(String title, String author, String genre, LocalDate publicationDate, int volumeNumber) {
-        super(title, author);
-        this.genre = genre;
-        this.publicationDate = publicationDate;
-        this.volumeNumber = volumeNumber;
+    public static abstract class JournalBuilder extends LibraryResource.Builder<JournalBuilder>{
+        private String genre;
+        private int volumeNumber;
+        private LocalDate publicationDate;
+        private Status statusOfJournalAvailability;
+
+        public JournalBuilder() {}
+
+        public JournalBuilder genre(String genre){
+            this.genre = genre;
+            return this;
+        }
+
+        public JournalBuilder publicationDate(LocalDate publicationDate){
+            this.publicationDate = publicationDate;
+            return this;
+        }
+
+        public JournalBuilder statusOfJournalAvailability(Status statusOfJournalAvailability){
+            this.statusOfJournalAvailability = statusOfJournalAvailability;
+            return this;
+        }
+
+        public Journal build(){
+            return new Journal(this);
+        }
+
     }
 
     /**
      * Instantiates a new Journal.
      *
-     * @param resourceId      the resource id
-     * @param title           the title
-     * @param author          the author
-     * @param genre           the genre
-     * @param publicationDate the publication date
-     * @param volumeNumber    the volume number
+     * @param builder the builder
      */
-    public Journal(int resourceId, String title, String author, String genre, LocalDate publicationDate, int volumeNumber) {
-        super(resourceId, title, author);
-        this.genre = genre;
-        this.publicationDate = publicationDate;
-        this.volumeNumber = volumeNumber;
+    public Journal(JournalBuilder builder) {
+        super(builder);
+        this.genre = builder.genre;
+        this.publicationDate = builder.publicationDate;
+        this.volumeNumber = builder.volumeNumber;
+        this.statusOfJournalAvailability = builder.statusOfJournalAvailability;
     }
 
     public String getGenre() {
@@ -53,27 +64,10 @@ public class Journal extends LibraryResource{
         return publicationDate;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public void setPublicationDate(LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
-    }
-
     public int getVolumeNumber() {
         return volumeNumber;
     }
-
-    public void setVolumeNumber(int volumeNumber) {
-        this.volumeNumber = volumeNumber;
-    }
-
     public Status getStatusOfJournalAvailability() {
         return statusOfJournalAvailability;
-    }
-
-    public void setStatusOfJournalAvailability(Status statusOfJournalAvailability) {
-        this.statusOfJournalAvailability = statusOfJournalAvailability;
     }
 }
