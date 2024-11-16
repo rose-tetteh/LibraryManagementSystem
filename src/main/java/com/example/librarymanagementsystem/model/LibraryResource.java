@@ -4,10 +4,11 @@ import com.example.librarymanagementsystem.enums.ResourceType;
 
 public class LibraryResource {
 
+
     private final int resourceId;
     private final String title;
     private final ResourceType resourceType;
-    private final String author;
+
 
     /**
      * The type Builder.
@@ -18,7 +19,7 @@ public class LibraryResource {
         private int resourceId;
         private String title;
         private ResourceType resourceType;
-        private String author;
+
 
         public Builder() {}
 
@@ -39,11 +40,6 @@ public class LibraryResource {
             return getThis();
         }
 
-        public T author(String author){
-            this.author = author;
-            return getThis();
-        }
-
         public LibraryResource build(){
             return new LibraryResource(this);
         }
@@ -57,7 +53,6 @@ public class LibraryResource {
     protected LibraryResource(Builder<?> builder){
         this.resourceId = builder.resourceId;
         this.title = builder.title;
-        this.author = builder.author;
         this.resourceType = builder.resourceType;
     }
 
@@ -71,10 +66,6 @@ public class LibraryResource {
 
     public ResourceType getResourceType() {
         return resourceType;
-    }
-
-    public String getAuthor() {
-        return author;
     }
 
 }

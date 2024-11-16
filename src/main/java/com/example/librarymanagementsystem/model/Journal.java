@@ -9,21 +9,38 @@ import java.time.LocalDate;
  */
 public class Journal extends LibraryResource{
     private final String genre;
+    private final String author;
     private final int volumeNumber;
     private final LocalDate publicationDate;
     private final Status statusOfJournalAvailability;
 
 
-    public static abstract class JournalBuilder extends LibraryResource.Builder<JournalBuilder>{
+    public static class JournalBuilder extends LibraryResource.Builder<JournalBuilder>{
         private String genre;
+        private String author;
         private int volumeNumber;
         private LocalDate publicationDate;
         private Status statusOfJournalAvailability;
 
         public JournalBuilder() {}
 
+        @Override
+        public JournalBuilder getThis() {
+            return null;
+        }
+
         public JournalBuilder genre(String genre){
             this.genre = genre;
+            return this;
+        }
+
+        public JournalBuilder author(String author){
+            this.author = author;
+            return getThis();
+        }
+
+        public JournalBuilder volumeNumber(int volumeNumber){
+            this.volumeNumber = volumeNumber;
             return this;
         }
 
@@ -51,6 +68,7 @@ public class Journal extends LibraryResource{
     public Journal(JournalBuilder builder) {
         super(builder);
         this.genre = builder.genre;
+        this.author = builder.author;
         this.publicationDate = builder.publicationDate;
         this.volumeNumber = builder.volumeNumber;
         this.statusOfJournalAvailability = builder.statusOfJournalAvailability;
@@ -58,6 +76,10 @@ public class Journal extends LibraryResource{
 
     public String getGenre() {
         return genre;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public LocalDate getPublicationDate() {
