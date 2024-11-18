@@ -26,9 +26,9 @@ CREATE TABLE Journal (
                          resourceId INT PRIMARY KEY,
                          genre VARCHAR(50),
                          author VARCHAR(255),
+                         volumeNumber INT,
                          publicationDate DATE,
                          statusOfJournalAvailability Status NOT NULL,
-                         volumeNumber INT,
                          FOREIGN KEY (resourceId) REFERENCES LibraryResource(resourceId)
 );
 

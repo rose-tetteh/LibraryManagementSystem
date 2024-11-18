@@ -1,31 +1,22 @@
 package com.example.librarymanagementsystem.model;
 
-public class Patron {
+public class Librarian {
 
-    private final int patronId;
-    private final int patronLibraryId;
+    private final int userId;
     private final String username;
     private final String email;
     private final String phoneNumber;
-    private final String address;
     private final String password;
 
    public static class PatronBuilder{
-       private int patronId;
-       private int patronLibraryId;
+       private int userId;
        private String username;
        private String email;
        private String phoneNumber;
-       private String address;
        private String password;
 
-       public PatronBuilder patronId(int patronId){
-           this.patronId = patronId;
-           return this;
-       }
-
-       public PatronBuilder patronLibraryId(int patronLibraryId){
-           this.patronLibraryId = patronLibraryId;
+       public PatronBuilder userId(int userId){
+           this.userId = userId;
            return this;
        }
 
@@ -44,37 +35,26 @@ public class Patron {
            return this;
        }
 
-       public PatronBuilder address(String address){
-           this.address = address;
-           return this;
-       }
-
        public PatronBuilder password(String password){
            this.password = password;
            return this;
        }
 
-       public Patron build(){
-           return new Patron(this);
+       public Librarian build(){
+           return new Librarian(this);
        }
    }
 
-    public Patron(PatronBuilder builder) {
-        this.patronId = builder.patronId;
-        this.patronLibraryId = builder.patronLibraryId;
+    public Librarian(PatronBuilder builder) {
+        this.userId = builder.userId;
         this.username = builder.username;
         this.email = builder.email;
         this.phoneNumber = builder.phoneNumber;
-        this.address = builder.address;
         this.password = builder.password;
     }
 
-    public int getPatronId() {
-        return patronId;
-    }
-
-    public int getPatronLibraryId() {
-       return patronLibraryId;
+    public int getUserId() {
+        return userId;
     }
 
    public String getUsername() {
@@ -86,15 +66,11 @@ public class Patron {
     }
 
    public String getPassword() {
-
        return password;
    }
 
    public String getPhoneNumber() {
        return phoneNumber;
-   }
-   public String getAddress() {
-       return address;
    }
 
 }

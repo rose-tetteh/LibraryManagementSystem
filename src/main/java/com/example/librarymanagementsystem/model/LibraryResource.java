@@ -2,12 +2,16 @@ package com.example.librarymanagementsystem.model;
 
 import com.example.librarymanagementsystem.enums.ResourceType;
 
+import java.util.UUID;
+
+/**
+ * The type Library resource.
+ */
 public class LibraryResource {
-
-
-    private final int resourceId;
+    private final String resourceId;
     private final String title;
     private final ResourceType resourceType;
+    private final int numberOfCopies;
 
 
     /**
@@ -16,16 +20,17 @@ public class LibraryResource {
      * @param <T> the type parameter
      */
     public abstract static class Builder<T extends Builder<T>>{
-        private int resourceId;
+        private String resourceId;
         private String title;
         private ResourceType resourceType;
+        private int numberOfCopies;
 
 
         public Builder() {}
 
         public abstract T getThis();
 
-        public T resourceId(int resourceId){
+        public T resourceId(String resourceId){
             this.resourceId = resourceId;
             return getThis();
         }
@@ -37,6 +42,11 @@ public class LibraryResource {
 
         public T resourceType(ResourceType resourceType){
             this.resourceType = resourceType;
+            return getThis();
+        }
+
+        public T numberOfCopies(int numberOfCopies){
+            this.numberOfCopies = numberOfCopies;
             return getThis();
         }
 
@@ -54,9 +64,10 @@ public class LibraryResource {
         this.resourceId = builder.resourceId;
         this.title = builder.title;
         this.resourceType = builder.resourceType;
+        this.numberOfCopies = builder.numberOfCopies;
     }
 
-    public int getResourceId() {
+    public String getResourceId() {
         return resourceId;
     }
 
@@ -68,4 +79,7 @@ public class LibraryResource {
         return resourceType;
     }
 
+    public int getNumberOfCopies() {
+        return numberOfCopies;
+    }
 }
