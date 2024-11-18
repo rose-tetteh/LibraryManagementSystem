@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JetClientState">
+    <option name="folders">
+      <list>
+        <folderState>
+          <option name="description" value="Manage library resources" />
+          <option name="environmentGroups">
+            <list>
+              <environmentGroupState>
+                <option name="name" value="Default" />
+              </environmentGroupState>
+            </list>
+          </option>
+          <option name="id" value="10bebe16-b4da-41c1-b6b3-e5f9bc8f8590" />
+          <option name="name" value="LibraryManagementSystem" />
+          <option name="syncProperties">
+            <synchronizationPropertiesState>
+              <option name="autoSync" value="true" />
+              <option name="folderPath" value="C:\Users\RoseOtukuoTetteh\Documents\Java Labs\LibraryManagementSystem\.jetclient" />
+            </synchronizationPropertiesState>
+          </option>
+        </folderState>
+      </list>
+    </option>
+    <option name="id" value="bcadd771-0a72-46b3-8589-7343be9b327b" />
+    <option name="version" value="4" />
+  </component>
+</project>
