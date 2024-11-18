@@ -1,10 +1,9 @@
-package com.example.librarymanagementsystem.dao;
+package com.example.librarymanagementsystem.daos;
 import com.example.librarymanagementsystem.enums.Status;
 import com.example.librarymanagementsystem.model.Book;
 import com.example.librarymanagementsystem.utils.DatabaseConnection;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,24 +30,7 @@ public class BookDAO implements LibraryResourceDAO<Book> {
         try(Statement statement = connection.createStatement()){
             resultSet = statement.executeQuery(query);
                 while(resultSet.next()){
-                    int id = resultSet.getInt("resourceId");
-                    String title = resultSet.getString("title");
-                    String author = resultSet.getString("author");
-                    String genre = resultSet.getString("genre");
-                    int numberOfCopies = resultSet.getInt("numberOfCopies");
-                    String isbn = resultSet.getString("isbn");
-                    LocalDate publicationDate = resultSet.getDate("publicationDate").toLocalDate();
-                    Status status = Status.valueOf(resultSet.getString("statusOfBookAvailability"));
-                    books.add(new Book.BookBuilder()
-                            .resourceId(id)
-                            .title(title)
-                            .author(author)
-                            .genre(genre)
-                            .numberOfCopies(numberOfCopies)
-                            .isbn(isbn)
-                            .publicationDate(publicationDate)
-                            .statusOfBookAvailability(status)
-                            .build());
+                    books.add(mapResultSetToBook(resultSet));
                 }
             } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
@@ -150,28 +132,24 @@ public class BookDAO implements LibraryResourceDAO<Book> {
             preparedStatement.setInt(1, resourceId);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
-                int id = resultSet.getInt("resourceId");
-                String title = resultSet.getString("title");
-                String author = resultSet.getString("author");
-                String genre = resultSet.getString("genre");
-                int numberOfCopies = resultSet.getInt("numberOfCopies");
-                String isbn = resultSet.getString("isbn");
-                LocalDate publicationDate = resultSet.getDate("publicationDate").toLocalDate();
-                Status status = Status.valueOf(resultSet.getString("statusOfBookAvailability"));
-                book = new Book.BookBuilder()
-                        .resourceId(id)
-                        .title(title)
-                        .author(author)
-                        .genre(genre)
-                        .numberOfCopies(numberOfCopies)
-                        .isbn(isbn)
-                        .publicationDate(publicationDate)
-                        .statusOfBookAvailability(status)
-                        .build();
+                book = mapResultSetToBook(resultSet);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Resource not found" + e.getMessage());
         }
         return book;
+    }
+
+    private Book mapResultSetToBook(ResultSet resultSet) throws SQLException{
+        return new Book.BookBuilder()
+                .resourceId(resultSet.getInt("resourceId"))
+                .title(resultSet.getString("title"))
+                .numberOfCopies(resultSet.getInt("numberOfCopies"))
+                .author(resultSet.getString("author"))
+                .genre(resultSet.getString("genre"))
+                .isbn(resultSet.getString("isbn"))
+                .publicationDate(resultSet.getDate("publicationDate").toLocalDate())
+                .statusOfBookAvailability(Status.valueOf(resultSet.getString("statusOfBookAvailability")))
+                .build();
     }
 }

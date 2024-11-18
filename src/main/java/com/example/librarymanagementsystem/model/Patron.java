@@ -3,28 +3,26 @@ package com.example.librarymanagementsystem.model;
 public class Patron {
 
     private final int patronId;
-    private final int patronLibraryId;
+    private final String patronLibraryId;
     private final String username;
     private final String email;
     private final String phoneNumber;
     private final String address;
-    private final String password;
 
    public static class PatronBuilder{
        private int patronId;
-       private int patronLibraryId;
+       private String patronLibraryId;
        private String username;
        private String email;
        private String phoneNumber;
        private String address;
-       private String password;
 
        public PatronBuilder patronId(int patronId){
            this.patronId = patronId;
            return this;
        }
 
-       public PatronBuilder patronLibraryId(int patronLibraryId){
+       public PatronBuilder patronLibraryId(String patronLibraryId){
            this.patronLibraryId = patronLibraryId;
            return this;
        }
@@ -49,11 +47,6 @@ public class Patron {
            return this;
        }
 
-       public PatronBuilder password(String password){
-           this.password = password;
-           return this;
-       }
-
        public Patron build(){
            return new Patron(this);
        }
@@ -66,14 +59,13 @@ public class Patron {
         this.email = builder.email;
         this.phoneNumber = builder.phoneNumber;
         this.address = builder.address;
-        this.password = builder.password;
     }
 
     public int getPatronId() {
         return patronId;
     }
 
-    public int getPatronLibraryId() {
+    public String getPatronLibraryId() {
        return patronLibraryId;
     }
 
@@ -84,11 +76,6 @@ public class Patron {
     public String getEmail() {
         return email;
     }
-
-   public String getPassword() {
-
-       return password;
-   }
 
    public String getPhoneNumber() {
        return phoneNumber;
