@@ -9,7 +9,7 @@ public class Transaction {
 
     private final int transactionId;
     private final int resourceId;
-    private final int userId;
+    private final int patronLibraryId;
     private final LocalDate transactionDate;
     private final LocalDate dueDate;
     private final Status transactionStatus;
@@ -20,7 +20,7 @@ public class Transaction {
     public static class TransactionBuilder{
         private int transactionId;
         private int resourceId;
-        private int userId;
+        private int patronLibraryId;
         private Status transactionStatus;
         private LocalDate transactionDate;
         private LocalDate dueDate;
@@ -35,8 +35,8 @@ public class Transaction {
             return this;
         }
 
-        public TransactionBuilder userId(int userId){
-            this.userId = userId;
+        public TransactionBuilder patronLibraryId(int patronLibraryId){
+            this.patronLibraryId = patronLibraryId;
             return this;
         }
 
@@ -68,7 +68,7 @@ public class Transaction {
     public Transaction(TransactionBuilder builder) {
         this.transactionId = builder.transactionId;
         this.resourceId = builder.resourceId;
-        this.userId = builder.userId;
+        this.patronLibraryId = builder.patronLibraryId;
         this.transactionDate = builder.transactionDate;
         this.dueDate = builder.dueDate;
         this.transactionStatus = builder.transactionStatus;
@@ -82,8 +82,8 @@ public class Transaction {
         return resourceId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getPatronLibraryId() {
+        return patronLibraryId;
     }
 
     public LocalDate getTransactionDate() {

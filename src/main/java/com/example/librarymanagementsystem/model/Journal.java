@@ -15,6 +15,7 @@ public class Journal extends LibraryResource{
     private final Status statusOfJournalAvailability;
 
 
+
     public static class JournalBuilder extends LibraryResource.Builder<JournalBuilder>{
         private String genre;
         private String author;
