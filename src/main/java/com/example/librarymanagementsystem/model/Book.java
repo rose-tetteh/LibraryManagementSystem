@@ -91,9 +91,9 @@ public class Book extends LibraryResource{
         return Date.valueOf(publicationDate);
     }
 
-    public String getStatusOfBookAvailability() {
+    public Status getStatusOfBookAvailability() {
 
-        return String.valueOf(statusOfBookAvailability);
+        return statusOfBookAvailability;
     }
 
     public String getIsbn() {

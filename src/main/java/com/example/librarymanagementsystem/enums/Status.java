@@ -1,5 +1,5 @@
 package com.example.librarymanagementsystem.enums;
 
 public enum Status {
-    AVAILABLE, PENDING, BORROWED, OVERDUE
+    available, pending, borrowed, overdue
 }
