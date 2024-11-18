@@ -2,6 +2,7 @@ package com.example.librarymanagementsystem.model;
 
 import com.example.librarymanagementsystem.enums.Status;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -83,8 +84,8 @@ public class Journal extends LibraryResource{
         return author;
     }
 
-    public LocalDate getPublicationDate() {
-        return publicationDate;
+    public Date getPublicationDate() {
+        return Date.valueOf(publicationDate);
     }
 
     public int getVolumeNumber() {
