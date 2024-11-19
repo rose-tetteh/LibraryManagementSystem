@@ -5,12 +5,15 @@ import com.example.librarymanagementsystem.model.Reservation;
 import com.example.librarymanagementsystem.utils.DatabaseConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class ReservationDAO {
     private String query;
     private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
     private final Connection connection = DatabaseConnection.getConnection();
     private final Queue<Reservation> reservationQueue = new LinkedList<>();
 
@@ -52,7 +55,7 @@ public class ReservationDAO {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, patronLibraryId);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 patronReservations.add(mapResultSetToReservation(resultSet));
             }
@@ -78,6 +81,22 @@ public class ReservationDAO {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    public List<Reservation> getAllReservations() {
+        query = "SELECT * FROM reservations";
+        List<Reservation> reservations = new ArrayList<>();
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                reservations.add(mapResultSetToReservation(resultSet));
+            }
+        } catch (SQLException e) {
+          throw new RuntimeException(e.getMessage());
+        }
+        return reservations;
+    }
+
 
     private Reservation mapResultSetToReservation(ResultSet resultSet) throws SQLException {
         return new Reservation.ReservationBuilder()
