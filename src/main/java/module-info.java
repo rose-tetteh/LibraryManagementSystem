@@ -11,7 +11,17 @@ module com.example.librarymanagementsystem {
     requires eu.hansolo.tilesfx;
     requires java.sql;
     requires io.github.cdimascio.dotenv.java;
+    requires java.desktop;
 
     opens com.example.librarymanagementsystem to javafx.fxml;
     exports com.example.librarymanagementsystem;
+
+    exports com.example.librarymanagementsystem.controller;
+    opens com.example.librarymanagementsystem.controller to javafx.fxml;
+
+    exports com.example.librarymanagementsystem.model;
+    opens com.example.librarymanagementsystem.model to javafx.fxml;
+
+    exports com.example.librarymanagementsystem.enums;
+    opens com.example.librarymanagementsystem.enums to javafx.fxml;
 }
