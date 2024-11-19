@@ -11,6 +11,7 @@ import java.util.Stack;
 
 public class TransactionDAO {
     private String query;
+    private ResultSet resultSet;
     private final Connection connection = DatabaseConnection.getConnection();
     private PreparedStatement preparedStatement;
     private final Stack<Transaction> transactionStack = new Stack<>();
@@ -85,12 +86,27 @@ public class TransactionDAO {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, patronLibraryId);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 transactions.add(mapResultSetToTransaction(resultSet));
             }
         } catch (SQLException e) {
            throw new RuntimeException(e.getMessage());
+        }
+        return transactions;
+    }
+
+    public List<Transaction> getAllTransactions() {
+        query = "SELECT * FROM transactions";
+        List<Transaction> transactions = new ArrayList<>();
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                transactions.add(mapResultSetToTransaction(resultSet));
+            }
+        } catch (SQLException e) {
+          throw new RuntimeException(e.getMessage());
         }
         return transactions;
     }
