@@ -62,6 +62,23 @@ public class ReservationDAO {
         return patronReservations;
     }
 
+    /**
+     * Delete reservation boolean.
+     *
+     * @param reservationId the reservation id
+     * @return the boolean
+     */
+    public boolean deleteReservation(int reservationId) {
+        query = "DELETE FROM reservation WHERE reservationId = ?";
+        try{
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, reservationId);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
     private Reservation mapResultSetToReservation(ResultSet resultSet) throws SQLException {
         return new Reservation.ReservationBuilder()
                 .reservationId(resultSet.getInt("reservationId"))
