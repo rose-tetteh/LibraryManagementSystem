@@ -1,4 +1,4 @@
-package com.example.librarymanagementsystem.dao;
+package com.example.librarymanagementsystem.daos;
 
 import com.example.librarymanagementsystem.model.LibraryResource;
 
