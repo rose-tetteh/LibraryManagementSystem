@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class Book extends LibraryResource{
     private final String genre;
+    private final String author;
     private final LocalDate publicationDate;
     private final Status statusOfBookAvailability;
 
@@ -15,6 +16,7 @@ public class Book extends LibraryResource{
      */
     public static class BookBuilder extends LibraryResource.Builder<BookBuilder>{
         private String genre;
+        private String author;
         private LocalDate publicationDate;
         private Status statusOfBookAvailability;
 
@@ -28,6 +30,11 @@ public class Book extends LibraryResource{
         public BookBuilder genre(String genre){
             this.genre = genre;
             return this;
+        }
+
+        public BookBuilder author(String author){
+            this.author = author;
+            return getThis();
         }
 
         public BookBuilder publicationDate(LocalDate publicationDate){
@@ -54,12 +61,17 @@ public class Book extends LibraryResource{
     public Book(BookBuilder builder) {
         super(builder);
         this.genre = builder.genre;
+        this.author = builder.author;
         this.publicationDate = builder.publicationDate;
         this.statusOfBookAvailability = builder.statusOfBookAvailability;
     }
 
     public String getGenre() {
         return genre;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public Date getPublicationDate() {
