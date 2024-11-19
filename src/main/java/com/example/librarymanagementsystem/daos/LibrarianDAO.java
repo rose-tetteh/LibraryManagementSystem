@@ -135,15 +135,15 @@ public class LibrarianDAO {
     /**
      * Delete librarian boolean.
      *
-     * @param librarianLibraryId the librarian library id
+     * @param userId the user id
      * @return the boolean
      */
-    public boolean deleteLibrarian(String librarianLibraryId) {
+    public boolean deleteLibrarian(int userId) {
         query = "DELETE FROM librarian WHERE librarianLibraryId = ?";
 
         try{
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, librarianLibraryId);
+            preparedStatement.setInt(1, userId);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
