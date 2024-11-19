@@ -63,7 +63,7 @@ public class TransactionDAO {
      * @return the boolean
      */
     public boolean deleteTransaction(int transactionId) {
-        query = "DELETE FROM transactions WHERE transactionId = ?";
+        query = "DELETE FROM transaction WHERE transactionId = ?";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, transactionId);
