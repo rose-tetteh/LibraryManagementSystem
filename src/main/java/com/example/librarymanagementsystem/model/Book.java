@@ -5,9 +5,14 @@ import com.example.librarymanagementsystem.enums.Status;
 import java.sql.Date;
 import java.time.LocalDate;
 
+/**
+ * isbn - international standard book number
+ * The type Book.
+ */
 public class Book extends LibraryResource{
     private final String genre;
     private final String author;
+    private final String isbn;
     private final LocalDate publicationDate;
     private final Status statusOfBookAvailability;
 
@@ -17,6 +22,7 @@ public class Book extends LibraryResource{
     public static class BookBuilder extends LibraryResource.Builder<BookBuilder>{
         private String genre;
         private String author;
+        private String isbn;
         private LocalDate publicationDate;
         private Status statusOfBookAvailability;
 
@@ -24,7 +30,7 @@ public class Book extends LibraryResource{
 
         @Override
         public BookBuilder getThis() {
-            return null;
+            return this;
         }
 
         public BookBuilder genre(String genre){
@@ -34,6 +40,11 @@ public class Book extends LibraryResource{
 
         public BookBuilder author(String author){
             this.author = author;
+            return getThis();
+        }
+
+        public BookBuilder isbn(String isbn){
+            this.isbn = isbn;
             return getThis();
         }
 
@@ -62,6 +73,7 @@ public class Book extends LibraryResource{
         super(builder);
         this.genre = builder.genre;
         this.author = builder.author;
+        this.isbn = builder.isbn;
         this.publicationDate = builder.publicationDate;
         this.statusOfBookAvailability = builder.statusOfBookAvailability;
     }
@@ -80,8 +92,11 @@ public class Book extends LibraryResource{
     }
 
     public Status getStatusOfBookAvailability() {
+
         return statusOfBookAvailability;
     }
 
-
+    public String getIsbn() {
+        return isbn;
+    }
 }

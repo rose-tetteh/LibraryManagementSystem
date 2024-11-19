@@ -2,12 +2,14 @@ package com.example.librarymanagementsystem.model;
 
 import com.example.librarymanagementsystem.enums.ResourceType;
 
+/**
+ * The type Library resource.
+ */
 public class LibraryResource {
-
-
     private final int resourceId;
     private final String title;
     private final ResourceType resourceType;
+    private final int numberOfCopies;
 
 
     /**
@@ -19,6 +21,7 @@ public class LibraryResource {
         private int resourceId;
         private String title;
         private ResourceType resourceType;
+        private int numberOfCopies;
 
 
         public Builder() {}
@@ -40,6 +43,11 @@ public class LibraryResource {
             return getThis();
         }
 
+        public T numberOfCopies(int numberOfCopies){
+            this.numberOfCopies = numberOfCopies;
+            return getThis();
+        }
+
         public LibraryResource build(){
             return new LibraryResource(this);
         }
@@ -54,6 +62,7 @@ public class LibraryResource {
         this.resourceId = builder.resourceId;
         this.title = builder.title;
         this.resourceType = builder.resourceType;
+        this.numberOfCopies = builder.numberOfCopies;
     }
 
     public int getResourceId() {
@@ -68,4 +77,7 @@ public class LibraryResource {
         return resourceType;
     }
 
+    public int getNumberOfCopies() {
+        return numberOfCopies;
+    }
 }

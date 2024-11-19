@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>829</IntrospectionStateNumber>
+      <IntrospectionStateNumber>985</IntrospectionStateNumber>
       <ServerVersion>17.0</ServerVersion>
       <StartupTime>1731586083</StartupTime>
       <TimeZones>true ACDT
@@ -799,7 +799,7 @@ false Zulu
 14704||10|C|G
 14704||-9223372036854775808|U|G
 14704||10|U|G</Grants>
-      <IntrospectionStateNumber>829</IntrospectionStateNumber>
+      <IntrospectionStateNumber>986</IntrospectionStateNumber>
       <ObjectId>16390</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -815,7 +815,7 @@ false Zulu
 14704||10|C|G
 14704||-9223372036854775808|U|G
 14704||10|U|G</Grants>
-      <IntrospectionStateNumber>826</IntrospectionStateNumber>
+      <IntrospectionStateNumber>985</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4237,8 +4237,8 @@ false Zulu
     <schema id="265" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>829</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-11-15.18:34:16</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>986</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-11-18.07:17:32</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -7594,8 +7594,8 @@ false Zulu
     <schema id="509" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>826</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-11-15.18:33:31</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>985</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-11-18.07:17:31</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -7603,8 +7603,8 @@ false Zulu
     <object-type id="510" parent="265" name="resourcetype">
       <Labels>book
 journal</Labels>
-      <ObjectId>16492</ObjectId>
-      <StateNumber>817</StateNumber>
+      <ObjectId>16782</ObjectId>
+      <StateNumber>949</StateNumber>
       <SubCategory>enum</SubCategory>
       <SubKind>enum</SubKind>
       <OwnerName>postgres</OwnerName>
@@ -7614,437 +7614,619 @@ journal</Labels>
 pending
 borrowed
 overdue</Labels>
-      <ObjectId>16498</ObjectId>
-      <StateNumber>818</StateNumber>
+      <ObjectId>16788</ObjectId>
+      <StateNumber>950</StateNumber>
       <SubCategory>enum</SubCategory>
       <SubKind>enum</SubKind>
       <OwnerName>postgres</OwnerName>
     </object-type>
-    <table id="512" parent="265" name="book">
-      <ObjectId>16512</ObjectId>
-      <StateNumber>820</StateNumber>
+    <sequence id="512" parent="265" name="librarian_userid_seq">
+      <ObjectId>16839</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>955</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="513" parent="265" name="libraryresource_resourceid_seq">
+      <ObjectId>16797</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>951</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="514" parent="265" name="patron_patronid_seq">
+      <ObjectId>16825</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>954</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="515" parent="265" name="reservation_reservationid_seq">
+      <ObjectId>16851</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>956</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="516" parent="265" name="transaction_transactionid_seq">
+      <ObjectId>16867</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>957</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="517" parent="265" name="book">
+      <ObjectId>16803</ObjectId>
+      <StateNumber>952</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="513" parent="265" name="journal">
-      <ObjectId>16522</ObjectId>
-      <StateNumber>821</StateNumber>
+    <table id="518" parent="265" name="journal">
+      <ObjectId>16883</ObjectId>
+      <StateNumber>970</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="514" parent="265" name="libraryresource">
-      <ObjectId>16507</ObjectId>
-      <StateNumber>820</StateNumber>
+    <table id="519" parent="265" name="librarian">
+      <ObjectId>16840</ObjectId>
+      <StateNumber>955</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="515" parent="265" name="patron">
-      <ObjectId>16532</ObjectId>
-      <StateNumber>823</StateNumber>
+    <table id="520" parent="265" name="libraryresource">
+      <ObjectId>16798</ObjectId>
+      <StateNumber>952</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="516" parent="265" name="reservation">
-      <ObjectId>16543</ObjectId>
-      <StateNumber>823</StateNumber>
+    <table id="521" parent="265" name="patron">
+      <ObjectId>16826</ObjectId>
+      <StateNumber>956</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="517" parent="265" name="transaction">
-      <ObjectId>16558</ObjectId>
-      <StateNumber>824</StateNumber>
+    <table id="522" parent="265" name="reservation">
+      <ObjectId>16852</ObjectId>
+      <StateNumber>956</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="518" parent="512" name="resource_id">
+    <table id="523" parent="265" name="transaction">
+      <ObjectId>16868</ObjectId>
+      <StateNumber>957</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="524" parent="517" name="resourceid">
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>820</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="519" parent="512" name="genre">
-      <Position>2</Position>
-      <StateNumber>820</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="520" parent="512" name="author">
-      <Position>3</Position>
-      <StateNumber>820</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="521" parent="512" name="publicationdate">
-      <Position>4</Position>
-      <StateNumber>820</StateNumber>
-      <StoredType>date|0s</StoredType>
-      <TypeId>1082</TypeId>
-    </column>
-    <column id="522" parent="512" name="statusofbookavailability">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>820</StateNumber>
-      <StoredType>status|0s</StoredType>
-      <TypeId>16498</TypeId>
-    </column>
-    <foreign-key id="523" parent="512" name="book_resource_id_fkey">
-      <ColNames>resource_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16517</ObjectId>
-      <StateNumber>820</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16507</RefTableId>
-    </foreign-key>
-    <index id="524" parent="512" name="book_pkey">
-      <ColNames>resource_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16515</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>820</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-      <CollationNames>default</CollationNames>
-      <CollationIds>100</CollationIds>
-      <CollationParentNames>pg_catalog</CollationParentNames>
-    </index>
-    <key id="525" parent="512" name="book_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16516</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>820</StateNumber>
-      <UnderlyingIndexId>16515</UnderlyingIndexId>
-    </key>
-    <column id="526" parent="513" name="resource_id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>821</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="527" parent="513" name="genre">
-      <Position>2</Position>
-      <StateNumber>821</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="528" parent="513" name="author">
-      <Position>3</Position>
-      <StateNumber>821</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="529" parent="513" name="publicationdate">
-      <Position>4</Position>
-      <StateNumber>821</StateNumber>
-      <StoredType>date|0s</StoredType>
-      <TypeId>1082</TypeId>
-    </column>
-    <column id="530" parent="513" name="statusofjournalavailability">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>821</StateNumber>
-      <StoredType>status|0s</StoredType>
-      <TypeId>16498</TypeId>
-    </column>
-    <column id="531" parent="513" name="volumenumber">
-      <Position>6</Position>
-      <StateNumber>821</StateNumber>
+      <StateNumber>952</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="532" parent="513" name="journal_resource_id_fkey">
-      <ColNames>resource_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16527</ObjectId>
-      <StateNumber>821</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16507</RefTableId>
-    </foreign-key>
-    <index id="533" parent="513" name="journal_pkey">
-      <ColNames>resource_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16525</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>821</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-      <CollationNames>default</CollationNames>
-      <CollationIds>100</CollationIds>
-      <CollationParentNames>pg_catalog</CollationParentNames>
-    </index>
-    <key id="534" parent="513" name="journal_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16526</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>821</StateNumber>
-      <UnderlyingIndexId>16525</UnderlyingIndexId>
-    </key>
-    <column id="535" parent="514" name="resource_id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>819</StateNumber>
+    <column id="525" parent="517" name="genre">
+      <Position>2</Position>
+      <StateNumber>952</StateNumber>
       <StoredType>varchar(50)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="536" parent="514" name="title">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>819</StateNumber>
+    <column id="526" parent="517" name="author">
+      <Position>3</Position>
+      <StateNumber>952</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="537" parent="514" name="resourcetype">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>819</StateNumber>
-      <StoredType>resourcetype|0s</StoredType>
-      <TypeId>16492</TypeId>
+    <column id="527" parent="517" name="isbn">
+      <Position>4</Position>
+      <StateNumber>952</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <index id="538" parent="514" name="libraryresource_pkey">
-      <ColNames>resource_id</ColNames>
+    <column id="528" parent="517" name="publicationdate">
+      <Position>5</Position>
+      <StateNumber>952</StateNumber>
+      <StoredType>date|0s</StoredType>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="529" parent="517" name="statusofbookavailability">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>952</StateNumber>
+      <StoredType>status|0s</StoredType>
+      <TypeId>16788</TypeId>
+    </column>
+    <foreign-key id="530" parent="517" name="book_resourceid_fkey">
+      <ColNames>resourceid</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16510</ObjectId>
+      <ObjectId>16810</ObjectId>
+      <StateNumber>952</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16798</RefTableId>
+    </foreign-key>
+    <index id="531" parent="517" name="book_pkey">
+      <ColNames>resourceid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16808</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>819</StateNumber>
+      <StateNumber>952</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
-      <CollationNames>default</CollationNames>
-      <CollationIds>100</CollationIds>
-      <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="539" parent="514" name="libraryresource_pkey">
+    <key id="532" parent="517" name="book_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16511</ObjectId>
+      <ObjectId>16809</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>819</StateNumber>
-      <UnderlyingIndexId>16510</UnderlyingIndexId>
+      <StateNumber>952</StateNumber>
+      <UnderlyingIndexId>16808</UnderlyingIndexId>
     </key>
-    <column id="540" parent="515" name="user_id">
+    <column id="533" parent="518" name="resourceid">
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>822</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
+      <StateNumber>970</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
     </column>
-    <column id="541" parent="515" name="username">
-      <NotNull>1</NotNull>
+    <column id="534" parent="518" name="genre">
       <Position>2</Position>
-      <StateNumber>822</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StateNumber>970</StateNumber>
+      <StoredType>varchar(50)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="542" parent="515" name="email">
-      <NotNull>1</NotNull>
+    <column id="535" parent="518" name="author">
       <Position>3</Position>
-      <StateNumber>822</StateNumber>
+      <StateNumber>970</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="543" parent="515" name="password">
-      <NotNull>1</NotNull>
+    <column id="536" parent="518" name="volumenumber">
       <Position>4</Position>
-      <StateNumber>822</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
+      <StateNumber>970</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
     </column>
-    <index id="544" parent="515" name="patron_pkey">
-      <ColNames>user_id</ColNames>
+    <column id="537" parent="518" name="publicationdate">
+      <Position>5</Position>
+      <StateNumber>970</StateNumber>
+      <StoredType>date|0s</StoredType>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="538" parent="518" name="statusofjournalavailability">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>970</StateNumber>
+      <StoredType>status|0s</StoredType>
+      <TypeId>16788</TypeId>
+    </column>
+    <foreign-key id="539" parent="518" name="journal_resourceid_fkey">
+      <ColNames>resourceid</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16537</ObjectId>
+      <ObjectId>16888</ObjectId>
+      <StateNumber>970</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16798</RefTableId>
+    </foreign-key>
+    <index id="540" parent="518" name="journal_pkey">
+      <ColNames>resourceid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16886</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>822</StateNumber>
+      <StateNumber>970</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="545" parent="515" name="patron_username_key">
+    <key id="541" parent="518" name="journal_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16887</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>970</StateNumber>
+      <UnderlyingIndexId>16886</UnderlyingIndexId>
+    </key>
+    <column id="542" parent="519" name="userid">
+      <IdentityKind>always</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>955</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16839</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="543" parent="519" name="username">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>955</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="544" parent="519" name="email">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>955</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="545" parent="519" name="phonenumber">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>955</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="546" parent="519" name="password">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>955</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="547" parent="519" name="librarian_pkey">
+      <ColNames>userid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16845</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>955</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="548" parent="519" name="librarian_username_key">
       <ColNames>username</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16539</ObjectId>
-      <StateNumber>822</StateNumber>
+      <ObjectId>16847</ObjectId>
+      <StateNumber>955</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="546" parent="515" name="patron_email_key">
+    <index id="549" parent="519" name="librarian_email_key">
       <ColNames>email</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16541</ObjectId>
-      <StateNumber>822</StateNumber>
+      <ObjectId>16849</ObjectId>
+      <StateNumber>955</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="547" parent="515" name="patron_pkey">
+    <key id="550" parent="519" name="librarian_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16538</ObjectId>
+      <ObjectId>16846</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>822</StateNumber>
-      <UnderlyingIndexId>16537</UnderlyingIndexId>
+      <StateNumber>955</StateNumber>
+      <UnderlyingIndexId>16845</UnderlyingIndexId>
     </key>
-    <key id="548" parent="515" name="patron_username_key">
+    <key id="551" parent="519" name="librarian_username_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16540</ObjectId>
-      <StateNumber>822</StateNumber>
-      <UnderlyingIndexId>16539</UnderlyingIndexId>
+      <ObjectId>16848</ObjectId>
+      <StateNumber>955</StateNumber>
+      <UnderlyingIndexId>16847</UnderlyingIndexId>
     </key>
-    <key id="549" parent="515" name="patron_email_key">
+    <key id="552" parent="519" name="librarian_email_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16542</ObjectId>
-      <StateNumber>822</StateNumber>
-      <UnderlyingIndexId>16541</UnderlyingIndexId>
+      <ObjectId>16850</ObjectId>
+      <StateNumber>955</StateNumber>
+      <UnderlyingIndexId>16849</UnderlyingIndexId>
     </key>
-    <column id="550" parent="516" name="reservation_id">
+    <column id="553" parent="520" name="resourceid">
+      <IdentityKind>always</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>823</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
+      <StateNumber>951</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16797</SequenceId>
+      <TypeId>23</TypeId>
     </column>
-    <column id="551" parent="516" name="resource_id">
+    <column id="554" parent="520" name="title">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>823</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
+      <StateNumber>951</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="552" parent="516" name="user_id">
+    <column id="555" parent="520" name="resourcetype">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>823</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
+      <StateNumber>951</StateNumber>
+      <StoredType>resourcetype|0s</StoredType>
+      <TypeId>16782</TypeId>
     </column>
-    <column id="553" parent="516" name="reservationstatus">
-      <NotNull>1</NotNull>
+    <column id="556" parent="520" name="numberofcopies">
       <Position>4</Position>
-      <StateNumber>823</StateNumber>
-      <StoredType>status|0s</StoredType>
-      <TypeId>16498</TypeId>
-    </column>
-    <column id="554" parent="516" name="reservationdate">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>823</StateNumber>
-      <StoredType>timestamp|0s</StoredType>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="555" parent="516" name="queueposition">
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-      <StateNumber>823</StateNumber>
+      <StateNumber>951</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="556" parent="516" name="reservation_resource_id_fkey">
-      <ColNames>resource_id</ColNames>
+    <index id="557" parent="520" name="libraryresource_pkey">
+      <ColNames>resourceid</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16548</ObjectId>
-      <StateNumber>823</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16507</RefTableId>
-    </foreign-key>
-    <foreign-key id="557" parent="516" name="reservation_user_id_fkey">
-      <ColNames>user_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16553</ObjectId>
-      <StateNumber>823</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16532</RefTableId>
-    </foreign-key>
-    <index id="558" parent="516" name="reservation_pkey">
-      <ColNames>reservation_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16546</ObjectId>
+      <ObjectId>16801</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>823</StateNumber>
+      <StateNumber>951</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="559" parent="516" name="reservation_pkey">
+    <key id="558" parent="520" name="libraryresource_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16547</ObjectId>
+      <ObjectId>16802</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>823</StateNumber>
-      <UnderlyingIndexId>16546</UnderlyingIndexId>
+      <StateNumber>951</StateNumber>
+      <UnderlyingIndexId>16801</UnderlyingIndexId>
     </key>
-    <column id="560" parent="517" name="transaction_id">
+    <column id="559" parent="521" name="patronid">
+      <IdentityKind>always</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>824</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
+      <StateNumber>954</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16825</SequenceId>
+      <TypeId>23</TypeId>
     </column>
-    <column id="561" parent="517" name="resource_id">
+    <column id="560" parent="521" name="patronlibraryid">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>824</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
+      <StateNumber>954</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="562" parent="517" name="user_id">
+    <column id="561" parent="521" name="username">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>824</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
+      <StateNumber>954</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="563" parent="517" name="transactionstatus">
+    <column id="562" parent="521" name="email">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>824</StateNumber>
-      <StoredType>status|0s</StoredType>
-      <TypeId>16498</TypeId>
+      <StateNumber>954</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="564" parent="517" name="transactiondate">
+    <column id="563" parent="521" name="phonenumber">
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>824</StateNumber>
-      <StoredType>timestamp|0s</StoredType>
-      <TypeId>1114</TypeId>
+      <StateNumber>954</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="565" parent="517" name="duedate">
+    <column id="564" parent="521" name="address">
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StateNumber>824</StateNumber>
-      <StoredType>timestamp|0s</StoredType>
-      <TypeId>1114</TypeId>
+      <StateNumber>954</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="566" parent="517" name="transaction_resource_id_fkey">
-      <ColNames>resource_id</ColNames>
+    <column id="565" parent="521" name="password">
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>954</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="566" parent="521" name="patron_pkey">
+      <ColNames>patronid</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16563</ObjectId>
-      <StateNumber>824</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16507</RefTableId>
-    </foreign-key>
-    <foreign-key id="567" parent="517" name="transaction_user_id_fkey">
-      <ColNames>user_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16568</ObjectId>
-      <StateNumber>824</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16532</RefTableId>
-    </foreign-key>
-    <index id="568" parent="517" name="transaction_pkey">
-      <ColNames>transaction_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16561</ObjectId>
+      <ObjectId>16831</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>824</StateNumber>
+      <StateNumber>954</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="569" parent="517" name="transaction_pkey">
+    <index id="567" parent="521" name="patron_patronlibraryid_key">
+      <ColNames>patronlibraryid</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16562</ObjectId>
+      <ObjectId>16833</ObjectId>
+      <StateNumber>954</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <index id="568" parent="521" name="patron_username_key">
+      <ColNames>username</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16835</ObjectId>
+      <StateNumber>954</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <index id="569" parent="521" name="patron_email_key">
+      <ColNames>email</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16837</ObjectId>
+      <StateNumber>954</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="570" parent="521" name="patron_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16832</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>824</StateNumber>
-      <UnderlyingIndexId>16561</UnderlyingIndexId>
+      <StateNumber>954</StateNumber>
+      <UnderlyingIndexId>16831</UnderlyingIndexId>
+    </key>
+    <key id="571" parent="521" name="patron_patronlibraryid_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16834</ObjectId>
+      <StateNumber>954</StateNumber>
+      <UnderlyingIndexId>16833</UnderlyingIndexId>
+    </key>
+    <key id="572" parent="521" name="patron_username_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16836</ObjectId>
+      <StateNumber>954</StateNumber>
+      <UnderlyingIndexId>16835</UnderlyingIndexId>
+    </key>
+    <key id="573" parent="521" name="patron_email_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16838</ObjectId>
+      <StateNumber>954</StateNumber>
+      <UnderlyingIndexId>16837</UnderlyingIndexId>
+    </key>
+    <column id="574" parent="522" name="reservationid">
+      <IdentityKind>always</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>956</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16851</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="575" parent="522" name="resourceid">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>956</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="576" parent="522" name="patronlibraryid">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>956</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="577" parent="522" name="reservationstatus">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>956</StateNumber>
+      <StoredType>status|0s</StoredType>
+      <TypeId>16788</TypeId>
+    </column>
+    <column id="578" parent="522" name="reservationdate">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>956</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="579" parent="522" name="queueposition">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>956</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="580" parent="522" name="reservation_resourceid_fkey">
+      <ColNames>resourceid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16857</ObjectId>
+      <StateNumber>956</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16798</RefTableId>
+    </foreign-key>
+    <foreign-key id="581" parent="522" name="reservation_patronlibraryid_fkey">
+      <ColNames>patronlibraryid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16862</ObjectId>
+      <StateNumber>956</StateNumber>
+      <RefKeyColPositions>2</RefKeyColPositions>
+      <RefTableId>16826</RefTableId>
+    </foreign-key>
+    <index id="582" parent="522" name="reservation_pkey">
+      <ColNames>reservationid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16855</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>956</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="583" parent="522" name="reservation_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16856</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>956</StateNumber>
+      <UnderlyingIndexId>16855</UnderlyingIndexId>
+    </key>
+    <column id="584" parent="523" name="transactionid">
+      <IdentityKind>always</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>957</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16867</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="585" parent="523" name="resourceid">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>957</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="586" parent="523" name="patronlibraryid">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>957</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="587" parent="523" name="transactionstatus">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>957</StateNumber>
+      <StoredType>status|0s</StoredType>
+      <TypeId>16788</TypeId>
+    </column>
+    <column id="588" parent="523" name="transactiondate">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>957</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="589" parent="523" name="duedate">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>957</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <foreign-key id="590" parent="523" name="transaction_resourceid_fkey">
+      <ColNames>resourceid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16873</ObjectId>
+      <StateNumber>957</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16798</RefTableId>
+    </foreign-key>
+    <foreign-key id="591" parent="523" name="transaction_patronlibraryid_fkey">
+      <ColNames>patronlibraryid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16878</ObjectId>
+      <StateNumber>957</StateNumber>
+      <RefKeyColPositions>2</RefKeyColPositions>
+      <RefTableId>16826</RefTableId>
+    </foreign-key>
+    <index id="592" parent="523" name="transaction_pkey">
+      <ColNames>transactionid</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16871</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>957</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="593" parent="523" name="transaction_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16872</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>957</StateNumber>
+      <UnderlyingIndexId>16871</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>
