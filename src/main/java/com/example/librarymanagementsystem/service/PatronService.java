@@ -25,7 +25,7 @@ public class PatronService {
         return patronDAO.deletePatron(patronLibraryId);
     }
 
-    public Optional<Patron> getPatron(String patronLibraryId) {
+    public Optional<Patron> getPatronById(String patronLibraryId) {
         return patronDAO.getPatronByLibraryId(patronLibraryId);
     }
 
