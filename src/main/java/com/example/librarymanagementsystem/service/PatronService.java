@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class PatronService {
-    private PatronDAO patronDAO;
+    private final PatronDAO patronDAO;
+
+    public PatronService() {
+        this.patronDAO = new PatronDAO();
+    }
 
     public List<Patron> getAllPatrons() {
         return patronDAO.getAllPatrons();
