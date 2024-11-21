@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.Circle?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.librarymanagementsystem.controller.PatronDashboardControllerView" stylesheets="@patron-dashboard.css" fx:id="dashBox">
+    <BorderPane prefHeight="700.0" prefWidth="1500.0">
+        <left>
+            <VBox spacing="10" styleClass="sidebar" prefWidth="220">
+                <padding>
+                    <Insets top="20" right="10" bottom="20" left="10"/>
+                </padding>
+
+                <VBox styleClass="profile-section" alignment="CENTER" spacing="10">
+                    <Circle fx:id="profileImage" radius="40" styleClass="profile-image"/>
+                    <Label text="Patron" styleClass="profile-name"/>
+                </VBox>
+
+                <Separator styleClass="sidebar-separator"/>
+
+                <Button text="Dashboard" onAction="#handleDashboardView" styleClass="nav-button">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="DASHBOARD" size="16"/>
+                    </graphic>
+                </Button>
+                <Button text="Books" onAction="#handleBookView" styleClass="nav-button" fx:id="bookView">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="BOOK" size="16"/>
+                    </graphic>
+                </Button>
+                <Button text="Transactions" onAction="#handleTransactionView" styleClass="nav-button" fx:id="transactionView">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="EXCHANGE" size="16"/>
+                    </graphic>
+                </Button>
+                <Button text="Reservations" onAction="#handleReservationView" styleClass="nav-button" fx:id="reservationView">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CALENDAR" size="16"/>
+                    </graphic>
+                </Button>
+            </VBox>
+        </left>
+
+        <center>
+            <ScrollPane fitToWidth="true" styleClass="main-scroll-pane">
+                <VBox spacing="20" styleClass="main-content">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <Label text="Dashboard Overview" styleClass="page-title">
+                            <font>
+                                <Font name="System Bold" size="24.0"/>
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Refresh Data" styleClass="refresh-button">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="REFRESH" size="14"/>
+                            </graphic>
+                        </Button>
+                    </HBox>
+
+                    <GridPane hgap="50" vgap="50">
+                        <VBox styleClass="stat-box" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <FontAwesomeIconView glyphName="BOOK" size="24" styleClass="stat-icon"/>
+                            <Label text="Books" styleClass="stat-label"/>
+<!--                            <Label fx:id="totalBooksLabel" text="0" styleClass="stat-value"/>-->
+<!--                            <Label text="12% increase" styleClass="stat-trend positive"/>-->
+                        </VBox>
+
+                        <VBox styleClass="stat-box" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <FontAwesomeIconView glyphName="USERS" size="24" styleClass="stat-icon"/>
+                            <Label text="Reservations" styleClass="stat-label"/>
+<!--                            <Label fx:id="activePatronsLabel" text="0" styleClass="stat-value"/>-->
+<!--                            <Label text="5% increase" styleClass="stat-trend positive"/>-->
+                        </VBox>
+
+                        <VBox styleClass="stat-box" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                            <FontAwesomeIconView glyphName="EXCHANGE" size="24" styleClass="stat-icon"/>
+                            <Label text="Approved Transactions" styleClass="stat-label"/>
+<!--                            <Label fx:id="activeTransactionsLabel" text="0" styleClass="stat-value"/>-->
+<!--                            <Label text="3% decrease" styleClass="stat-trend negative"/>-->
+                        </VBox>
+
+                    </GridPane>
+
+                </VBox>
+            </ScrollPane>
+        </center>
+    </BorderPane>
+</HBox>

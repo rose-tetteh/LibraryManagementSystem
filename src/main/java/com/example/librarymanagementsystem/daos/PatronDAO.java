@@ -45,17 +45,16 @@ public class PatronDAO {
      * @param patron the patron
      */
     public void addPatron(Patron patron) {
-       query = "INSERT INTO patrons (patronId, patronLibraryId, username, email, phoneNumber, address)" +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+       query = "INSERT INTO patron (patronLibraryId, username, email, phoneNumber, address)" +
+                "VALUES (?, ?, ?, ?, ?)";
 
         try{
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, patron.getPatronId());
-            preparedStatement.setString(2, patron.getPatronLibraryId());
-            preparedStatement.setString(3, patron.getUsername());
-            preparedStatement.setString(4, patron.getEmail());
-            preparedStatement.setString(5, patron.getPhoneNumber());
-            preparedStatement.setString(6, patron.getAddress());
+            preparedStatement.setString(1, patron.getPatronLibraryId());
+            preparedStatement.setString(2, patron.getUsername());
+            preparedStatement.setString(3, patron.getEmail());
+            preparedStatement.setString(4, patron.getPhoneNumber());
+            preparedStatement.setString(5, patron.getAddress());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -70,7 +69,7 @@ public class PatronDAO {
      * @return the patron by library id
      */
     public Optional<Patron> getPatronByLibraryId(String patronLibraryId) {
-       query = "SELECT * FROM patrons WHERE patronLibraryId = ?";
+       query = "SELECT * FROM patron WHERE patronLibraryId = ?";
 
         try{
             preparedStatement = connection.prepareStatement(query);
@@ -93,7 +92,7 @@ public class PatronDAO {
      * @return the patron by email
      */
     public Optional<Patron> getPatronByEmail(String email) {
-       query = "SELECT * FROM patrons WHERE email = ?";
+       query = "SELECT * FROM patron WHERE email = ?";
 
         try{
             preparedStatement = connection.prepareStatement(query);
@@ -117,7 +116,7 @@ public class PatronDAO {
      * @return the boolean
      */
     public boolean updatePatron(String patronLibraryId, Patron updatedPatron) {
-        query = "UPDATE patrons SET username = ?, email = ?, phoneNumber = ?, address = ? " +
+        query = "UPDATE patron SET username = ?, email = ?, phoneNumber = ?, address = ? " +
                 "WHERE patronLibraryId = ?";
 
         try{
@@ -142,7 +141,7 @@ public class PatronDAO {
      */
 // Delete a patron
     public boolean deletePatron(String patronLibraryId) {
-        query = "DELETE FROM patrons WHERE patronLibraryId = ?";
+        query = "DELETE FROM patron WHERE patronLibraryId = ?";
 
         try{
             preparedStatement = connection.prepareStatement(query);
