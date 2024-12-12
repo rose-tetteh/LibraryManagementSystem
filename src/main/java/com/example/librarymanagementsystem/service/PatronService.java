@@ -17,8 +17,10 @@ public class PatronService {
         return patronDAO.getAllPatrons();
     }
 
-    public void addPatron(Patron patron) {
+    public Patron addPatron(Patron patron) {
+
         patronDAO.addPatron(patron);
+        return patron;
     }
 
     public boolean updatePatron(String patronLibraryId,Patron patron) {

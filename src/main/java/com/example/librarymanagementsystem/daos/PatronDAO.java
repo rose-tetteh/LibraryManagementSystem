@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.librarymanagementsystem.utils.DatabaseConnection.getConnection;
-
 /**
  * The type Patron dao.
  */
@@ -44,7 +42,7 @@ public class PatronDAO {
      *
      * @param patron the patron
      */
-    public void addPatron(Patron patron) {
+    public Patron addPatron(Patron patron) {
        query = "INSERT INTO patron (patronLibraryId, username, email, phoneNumber, address)" +
                 "VALUES (?, ?, ?, ?, ?)";
 
@@ -60,6 +58,7 @@ public class PatronDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
+        return patron;
     }
 
     /**
@@ -121,10 +120,10 @@ public class PatronDAO {
 
         try{
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, updatedPatron.getUsername());
-            preparedStatement.setString(2, updatedPatron.getEmail());
-            preparedStatement.setString(3, updatedPatron.getPhoneNumber());
-            preparedStatement.setString(4, updatedPatron.getAddress());
+            if(updatedPatron.getUsername() != null && !updatedPatron.getUsername().isEmpty()) {preparedStatement.setString(1, updatedPatron.getUsername());}
+            if(updatedPatron.getEmail() != null && !updatedPatron.getEmail().isEmpty()) {preparedStatement.setString(2, updatedPatron.getEmail());}
+            if(updatedPatron.getPhoneNumber() != null && !updatedPatron.getPhoneNumber().isEmpty()) {preparedStatement.setString(3, updatedPatron.getPhoneNumber());}
+            if(updatedPatron.getAddress() != null && !updatedPatron.getAddress().isEmpty()) {preparedStatement.setString(4, updatedPatron.getAddress());}
             preparedStatement.setString(5, patronLibraryId);
 
             return preparedStatement.executeUpdate() > 0;
