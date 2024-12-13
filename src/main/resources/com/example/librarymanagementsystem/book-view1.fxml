@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.shape.Circle?>
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.librarymanagementsystem.controller.BookControllerView1" stylesheets="@book-view.css">
+    <BorderPane prefHeight="700.0" prefWidth="1500.0">
+        <!-- Sidebar -->
+        <left>
+            <VBox fx:id="sidebar" spacing="10" styleClass="sidebar" prefWidth="220">
+                <padding>
+                    <Insets top="20" right="10" bottom="20" left="10"/>
+                </padding>
+
+                <VBox styleClass="profile-section" alignment="CENTER" spacing="10">
+                    <Circle fx:id="profileImage" radius="40" styleClass="profile-image"/>
+                    <Label text="Patron" styleClass="profile-name"/>
+                </VBox>
+
+                <Separator styleClass="sidebar-separator"/>
+
+                <!-- Sidebar Buttons -->
+                <Button text="Dashboard" onAction="#handleDashboardView" styleClass="nav-button">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="DASHBOARD" size="16"/>
+                    </graphic>
+                </Button>
+                <Button text="Books" onAction="#handleBookView" styleClass="nav-button" fx:id="bookView" >
+                    <graphic>
+                        <FontAwesomeIconView glyphName="BOOK" size="16"/>
+                    </graphic>
+                </Button>
+                <Button text="Transactions" onAction="#handleTransactionView" styleClass="nav-button" >
+                    <graphic>
+                        <FontAwesomeIconView glyphName="EXCHANGE" size="16"/>
+                    </graphic>
+                </Button>
+                <Button text="Reservations" onAction="#handleReservationView" styleClass="nav-button" >
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CALENDAR" size="16"/>
+                    </graphic>
+                </Button>
+            </VBox>
+        </left>
+
+        <!-- Center content -->
+        <center>
+            <ScrollPane fitToWidth="true" styleClass="main-scroll-pane">
+                <VBox spacing="20" styleClass="main-content">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <!-- Header and Refresh Button -->
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <Label text="Books and Journals" styleClass="page-title">
+                            <font>
+                                <Font name="System Bold" size="24.0"/>
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Refresh Data" styleClass="refresh-button">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="REFRESH" size="14"/>
+                            </graphic>
+                        </Button>
+                    </HBox>
+
+                    <!-- ComboBox for selecting Book/Journal -->
+                    <ComboBox fx:id="bookOrJournalCombo" prefWidth="200" promptText="Select Book/Journal" onAction="#handleCategorySelection">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Books"/>
+                                <String fx:value="Journals"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+
+                    <!-- Search Field for searching titles -->
+                    <TextField fx:id="searchField" promptText="Search by Title" onKeyReleased="#handleSearch"/>
+
+                    <!-- TableView to display Books/Journals -->
+                    <TableView fx:id="bookTable" prefWidth="750" prefHeight="400">
+                        <columns>
+                            <TableColumn fx:id="idColumn" text="ID" prefWidth="50">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="id"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="titleColumn" text="Title" prefWidth="150">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="title"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="authorColumn" text="Author" prefWidth="150">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="author"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="genreColumn" text="Genre" prefWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="genre"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="isbnColumn" text="ISBN" prefWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="isbn"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="publicationDateColumn" text="Publication Date" prefWidth="120">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="publicationDate"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="copiesColumn" text="Copies" prefWidth="80">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="numberOfCopies"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="statusColumn" text="Status" prefWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="status"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </ScrollPane>
+        </center>
+    </BorderPane>
+</HBox>
