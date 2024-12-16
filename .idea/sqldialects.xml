@@ -12,5 +12,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagementsystem/model" dialect="H2" />
     <file url="file://$PROJECT_DIR$/src/test/java/com/example/librarymanagementsystem/daos/PatronDAOTest.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/test/java/com/example/librarymanagementsystem/utils/DatabaseConnectionTest.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/db/h2-drop-schema.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/db/h2-schema.sql" dialect="H2" />
   </component>
 </project>

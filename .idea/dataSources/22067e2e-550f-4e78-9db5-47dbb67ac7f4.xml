@@ -169,83 +169,10 @@
     <schema id="162" parent="2" name="INFORMATION_SCHEMA"/>
     <schema id="163" parent="2" name="PUBLIC">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-12-15.23:10:17</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-12-16.11:14:18</LastIntrospectionLocalTimestamp>
     </schema>
     <user id="164" parent="2" name="DB_TEST">
       <Admin>1</Admin>
     </user>
-    <table id="165" parent="163" name="PATRON"/>
-    <column id="166" parent="165" name="PATRONID">
-      <ColumnKind>generated-virtual</ColumnKind>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>INTEGER|0s</StoredType>
-      <SequenceInline>1</SequenceInline>
-      <SequenceSequenceIdentity>1(1)</SequenceSequenceIdentity>
-      <SequenceStartValue>1</SequenceStartValue>
-      <SequenceStoredType>INTEGER|0s</SequenceStoredType>
-    </column>
-    <column id="167" parent="165" name="PATRONLIBRARYID">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
-    </column>
-    <column id="168" parent="165" name="USERNAME">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
-    </column>
-    <column id="169" parent="165" name="EMAIL">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
-    </column>
-    <column id="170" parent="165" name="PHONENUMBER">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
-    </column>
-    <column id="171" parent="165" name="ADDRESS">
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
-    </column>
-    <index id="172" parent="165" name="PRIMARY_KEY_3">
-      <ColNames>PATRONID</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Unique>1</Unique>
-    </index>
-    <index id="173" parent="165" name="CONSTRAINT_8C_INDEX_3">
-      <ColNames>PATRONLIBRARYID</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Unique>1</Unique>
-    </index>
-    <index id="174" parent="165" name="CONSTRAINT_8C3_INDEX_3">
-      <ColNames>USERNAME</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Unique>1</Unique>
-    </index>
-    <index id="175" parent="165" name="CONSTRAINT_8C3F_INDEX_3">
-      <ColNames>EMAIL</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Unique>1</Unique>
-    </index>
-    <key id="176" parent="165" name="CONSTRAINT_8">
-      <ColNames>PATRONID</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-    </key>
-    <key id="177" parent="165" name="CONSTRAINT_8C">
-      <ColNames>PATRONLIBRARYID</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-    </key>
-    <key id="178" parent="165" name="CONSTRAINT_8C3">
-      <ColNames>USERNAME</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-    </key>
-    <key id="179" parent="165" name="CONSTRAINT_8C3F">
-      <ColNames>EMAIL</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-    </key>
   </database-model>
 </dataSource>

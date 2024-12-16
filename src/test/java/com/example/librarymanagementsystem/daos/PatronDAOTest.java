@@ -3,7 +3,9 @@ package com.example.librarymanagementsystem.daos;
 import com.example.librarymanagementsystem.model.Patron;
 import com.example.librarymanagementsystem.utils.DatabaseConnection;
 import com.example.librarymanagementsystem.utils.DatabaseConnectionTest;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -18,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class PatronDAOTest {
     private static PatronDAO patronDAO;
-    private static Patron patron;
+    private static Patron patron, addedPatron;
 
     /**
      * Sets up.
@@ -43,6 +45,7 @@ class PatronDAOTest {
                 .phoneNumber("1234567890")
                 .address("123 New Street")
                 .build();
+        addedPatron = patronDAO.addPatron(patron);
     }
 
     /**
@@ -51,7 +54,7 @@ class PatronDAOTest {
     @Test
     @DisplayName("Test Add Patron")
     void givenPatron_whenAddPatron_thenReturnPatron(){
-        assertEquals(patron, patronDAO.addPatron(patron));
+        assertEquals(patron, addedPatron);
     }
 
     /**
@@ -60,7 +63,6 @@ class PatronDAOTest {
     @Test
     @DisplayName("Add Patron and Retrieve")
     void testRetrieveAddedPatron() {
-//        patronDAO.addPatron(patron);
         Optional<Patron> retrievedPatron = patronDAO.getPatronByLibraryId("LIB-12345678-42");
 
         assertTrue(retrievedPatron.isPresent());
@@ -68,7 +70,11 @@ class PatronDAOTest {
         assertEquals("johnupdated", retrievedPatron.get().getUsername());
     }
 
+    /**
+     * Given patron with some null attributes when add patron then throw runtime exception.
+     */
     @Test
+    @DisplayName("Add Patron with some null values")
     void givenPatronWithSomeNullAttributes_whenAddPatron_thenThrowRuntimeException (){
         Patron newPatron = new Patron.PatronBuilder()
                 .patronLibraryId("LIB-12345678-50")
@@ -88,13 +94,13 @@ class PatronDAOTest {
      * @param address     the address
      */
     @ParameterizedTest
-    @DisplayName("Add Multiple Patrons")
+    @DisplayName("Add Patron with an ID already in use")
     @CsvSource({
             "LIB-12345678-42, janeDoe, jane@example.com, 0987654321, 456 Mock Avenue"
     })
     void givenNewPatronWithAnAlreadyExisting_whenAddPatron_returnEntityAlreadyExistsException(String libraryId, String username, String email,
                                 String phoneNumber, String address) {
-//        patronDAO.addPatron(patron);
+        patronDAO.addPatron(patron);
         Patron newPatron = new Patron.PatronBuilder()
                 .patronLibraryId(libraryId)
                 .username(username)
@@ -108,12 +114,23 @@ class PatronDAOTest {
     }
 
     /**
+     * Test get patron by email.
+     */
+    @Test
+    @DisplayName("Get Patron by Email")
+    void testGetPatronByEmail() {
+        Optional<Patron> retrievedPatron = patronDAO.getPatronByEmail("john@example.com");
+
+        assertTrue(retrievedPatron.isPresent());
+        assertEquals("john@example.com", retrievedPatron.get().getEmail());
+    }
+
+    /**
      * Test get all patrons.
      */
     @Test
     @DisplayName("Get All Patrons")
     void testGetAllPatrons() {
-        patronDAO.addPatron(patron);
         Patron newPatron = new Patron.PatronBuilder()
                 .patronLibraryId("LIB-37485920-91")
                 .username("janetdoe")
@@ -137,7 +154,6 @@ class PatronDAOTest {
     @Test
     @DisplayName("Update Patron")
     void testUpdatePatron() {
-//        patronDAO.addPatron(patron);
         Patron updatedPatron = new Patron.PatronBuilder()
                 .username("johnupdated")
                 .email("john.updated@example.com")
@@ -161,7 +177,6 @@ class PatronDAOTest {
     @Test
     @DisplayName("Delete Patron")
     void testDeletePatron() {
-//        patronDAO.addPatron(patron);
         boolean deleteResult = patronDAO.deletePatron("LIB-12345678-42");
 
         Optional<Patron> retrievedPatron = patronDAO.getPatronByLibraryId("LIB-12345678-42");
@@ -169,4 +184,5 @@ class PatronDAOTest {
         assertTrue(deleteResult);
         assertFalse(retrievedPatron.isPresent());
     }
+
 }

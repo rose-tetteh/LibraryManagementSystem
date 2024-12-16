@@ -1,5 +1,6 @@
 package com.example.librarymanagementsystem.controller;
 
+import com.example.librarymanagementsystem.daos.LibrarianDAO;
 import com.example.librarymanagementsystem.model.Librarian;
 import com.example.librarymanagementsystem.service.LibrarianService;
 import com.example.librarymanagementsystem.utils.ViewLoader;
@@ -36,11 +37,16 @@ public class LibrarianLoginControllerView {
     private Image eyeOpenImage;
 
     private LibrarianService librarianService;
+    private LibrarianDAO librarianDAO;
 
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
+    public LibrarianLoginControllerView(LibrarianDAO librarianDAO) {
+        this.librarianDAO = librarianDAO;
+    }
+
     public void initialize() {
-        librarianService = new LibrarianService();
+        librarianService = new LibrarianService(librarianDAO);
         visiblePasswordField = new TextField();
         visiblePasswordField.setManaged(false);
         visiblePasswordField.setVisible(false);
