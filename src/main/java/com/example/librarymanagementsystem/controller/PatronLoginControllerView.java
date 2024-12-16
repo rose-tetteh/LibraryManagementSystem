@@ -1,5 +1,6 @@
 package com.example.librarymanagementsystem.controller;
 
+import com.example.librarymanagementsystem.daos.PatronDAO;
 import com.example.librarymanagementsystem.model.Patron;
 import com.example.librarymanagementsystem.service.PatronService;
 import com.example.librarymanagementsystem.utils.ViewLoader;
@@ -24,11 +25,16 @@ public class PatronLoginControllerView {
     private Label errorLabel;
 
     private PatronService patronService;
+    private final PatronDAO patronDAO;
 
     private static final String LIBRARY_ID_PATTERN = "LIB-\\d{8}-\\d{2}";
 
+    public PatronLoginControllerView(PatronDAO patronDAO) {
+        this.patronDAO = patronDAO;
+    }
+
     public void initialize() {
-        patronService = new PatronService(); // You can use dependency injection or a singleton pattern for this.
+        patronService = new PatronService(patronDAO); // You can use dependency injection or a singleton pattern for this.
         loginButton.setOnAction(e -> authenticatePatron());
     }
 
