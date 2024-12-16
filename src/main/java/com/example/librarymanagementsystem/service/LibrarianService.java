@@ -7,14 +7,18 @@ import java.util.List;
 import java.util.Optional;
 
 public class LibrarianService {
-    private LibrarianDAO librarianDAO;
+    private final LibrarianDAO librarianDAO;
+
+    public LibrarianService(LibrarianDAO librarianDAO) {
+        this.librarianDAO = librarianDAO;
+    }
 
     public List<Librarian> getAllLibrarians() {
         return librarianDAO.getAllLibrarians();
     }
 
-    public void addLibrarian(Librarian librarian) {
-        librarianDAO.addLibrarian(librarian);
+    public Librarian addLibrarian(Librarian librarian) {
+        return librarianDAO.addLibrarian(librarian);
     }
 
     public Optional<Librarian> getLibrarianByUserId(int userId) {

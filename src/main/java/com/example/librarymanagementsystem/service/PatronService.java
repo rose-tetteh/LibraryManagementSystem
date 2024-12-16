@@ -9,8 +9,9 @@ import java.util.Optional;
 public class PatronService {
     private final PatronDAO patronDAO;
 
-    public PatronService() {
-        this.patronDAO = new PatronDAO();
+    // Constructor that takes PatronDAO as a parameter
+    public PatronService(PatronDAO patronDAO) {
+        this.patronDAO = patronDAO;
     }
 
     public List<Patron> getAllPatrons() {
@@ -18,12 +19,11 @@ public class PatronService {
     }
 
     public Patron addPatron(Patron patron) {
-
         patronDAO.addPatron(patron);
         return patron;
     }
 
-    public boolean updatePatron(String patronLibraryId,Patron patron) {
+    public boolean updatePatron(String patronLibraryId, Patron patron) {
         return patronDAO.updatePatron(patronLibraryId, patron);
     }
 

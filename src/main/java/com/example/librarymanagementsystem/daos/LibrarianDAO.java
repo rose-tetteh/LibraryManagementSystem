@@ -39,11 +39,12 @@ public class LibrarianDAO {
     }
 
     /**
-     * Add librarian.
+     * Add librarian librarian.
      *
      * @param librarian the librarian
+     * @return the librarian
      */
-    public void addLibrarian(Librarian librarian) {
+    public Librarian addLibrarian(Librarian librarian) {
        query = "INSERT INTO librarian (userId, username, email, phoneNumber, password)" +
                 "VALUES (?, ?, ?, ?, ?)";
 
@@ -59,6 +60,7 @@ public class LibrarianDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
+        return librarian;
     }
 
 
@@ -116,7 +118,7 @@ public class LibrarianDAO {
      * @return the boolean
      */
     public boolean updateLibrarian(int userId, Librarian updatedLibrarian) {
-        query = "UPDATE librarian SET username = ?, email = ?, phoneNumber = ?, address = ? " +
+        query = "UPDATE librarian SET username = ?, email = ?, phoneNumber = ?" +
                 "WHERE userId = ?";
 
         try{
@@ -139,7 +141,7 @@ public class LibrarianDAO {
      * @return the boolean
      */
     public boolean deleteLibrarian(int userId) {
-        query = "DELETE FROM librarian WHERE librarianLibraryId = ?";
+        query = "DELETE FROM librarian WHERE userId = ?";
 
         try{
             preparedStatement = connection.prepareStatement(query);
