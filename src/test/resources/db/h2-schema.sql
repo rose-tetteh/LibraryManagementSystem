@@ -70,7 +70,7 @@ CREATE TABLE Librarian (
 );
 
 -- Table for Reservations
-CREATE TABLE Reservation (
+CREATE TABLE Reservations (
                              reservationId INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                              resourceId INT NOT NULL,
                              patronLibraryId VARCHAR(255) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE Reservation (
 );
 
 -- Table for Transactions
-CREATE TABLE Transaction (
+CREATE TABLE Transactions (
                              transactionId INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                              resourceId INT NOT NULL,
                              patronLibraryId VARCHAR(255) NOT NULL,

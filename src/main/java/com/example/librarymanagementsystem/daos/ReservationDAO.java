@@ -24,15 +24,14 @@ public class ReservationDAO {
      * @return the boolean
      */
     public boolean requestReservation(Reservation reservation) {
-        query = "INSERT INTO reservations (reservationId, resourceId, patronLibraryId, reservation_status, reservation_date, queue_position) VALUES (?, ?, ?, ?, ?, ?)";
+        query = "INSERT INTO reservations (resourceId, patronLibraryId, reservationStatus, reservationDate, queuePosition) VALUES (?, ?, ?, ?, ?)";
         try {
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, reservation.getReservationId());
-            preparedStatement.setInt(2, reservation.getResourceId());
-            preparedStatement.setInt(3, reservation.getPatronLibraryId());
-            preparedStatement.setObject(4, "pending", Types.OTHER);
-            preparedStatement.setDate(5, Date.valueOf(reservation.getReservationDate()));
-            preparedStatement.setInt(6, reservationQueue.size() + 1);
+            preparedStatement.setInt(1, reservation.getResourceId());
+            preparedStatement.setInt(2, reservation.getPatronLibraryId());
+            preparedStatement.setObject(3, "pending", Types.OTHER);
+            preparedStatement.setDate(4, Date.valueOf(reservation.getReservationDate()));
+            preparedStatement.setInt(5, reservationQueue.size() + 1);
             if (preparedStatement.executeUpdate() > 0) {
                 reservationQueue.add(reservation);
                 return true;
@@ -72,7 +71,7 @@ public class ReservationDAO {
      * @return the boolean
      */
     public boolean deleteReservation(int reservationId) {
-        query = "DELETE FROM reservation WHERE reservationId = ?";
+        query = "DELETE FROM reservations WHERE reservationId = ?";
         try{
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, reservationId);
