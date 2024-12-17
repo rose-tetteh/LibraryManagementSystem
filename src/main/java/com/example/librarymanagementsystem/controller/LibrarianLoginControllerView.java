@@ -18,13 +18,13 @@ import java.util.Optional;
 public class LibrarianLoginControllerView {
 
     @FXML
-    private TextField emailField;
+    protected TextField emailField;
     @FXML
-    private Button loginButton;
+    protected Button loginButton;
     @FXML
-    private Label errorLabel;
+    protected Label errorLabel;
     @FXML
-    private PasswordField passwordField;
+    protected TextField passwordField;
     @FXML
     private TextField visiblePasswordField;
     @FXML
@@ -36,7 +36,7 @@ public class LibrarianLoginControllerView {
     @FXML
     private Image eyeOpenImage;
 
-    private LibrarianService librarianService;
+    protected LibrarianService librarianService;
     private LibrarianDAO librarianDAO;
 
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -57,7 +57,7 @@ public class LibrarianLoginControllerView {
         loginButton.setOnAction(e -> authenticateLibrarian());
     }
 
-    private void authenticateLibrarian() {
+    public void authenticateLibrarian() {
         String email = emailField.getText().trim();
         String password = passwordField.getText().trim();
 

@@ -7,7 +7,7 @@ public class Reservation {
 
     private final int reservationId;
     private final int resourceId;
-    private final int patronLibraryId;
+    private final String patronLibraryId;
     private final Status reservationStatus;
     private final LocalDate reservationDate;
     private final int queuePosition;
@@ -19,7 +19,7 @@ public class Reservation {
 
         private int reservationId;
         private int resourceId;
-        private int patronLibraryId;
+        private String patronLibraryId;
         private Status reservationStatus;
         private LocalDate reservationDate;
         private int queuePosition;
@@ -34,7 +34,7 @@ public class Reservation {
             return this;
         }
 
-        public ReservationBuilder patronLibraryId(int patronLibraryId){
+        public ReservationBuilder patronLibraryId(String patronLibraryId){
             this.patronLibraryId = patronLibraryId;
             return this;
         }
@@ -81,7 +81,7 @@ public class Reservation {
         return resourceId;
     }
 
-    public int getPatronLibraryId() {
+    public String getPatronLibraryId() {
         return patronLibraryId;
     }
 

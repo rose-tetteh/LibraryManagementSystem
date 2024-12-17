@@ -138,6 +138,8 @@ public abstract class LibraryResourceDAOImpl<T extends LibraryResource> implemen
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 resource = mapResultSetToResource(resultSet);
+            } else{
+                throw new RuntimeException("Resource not found: " + resourceId);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Resource not found: " + e.getMessage());

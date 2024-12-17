@@ -8,9 +8,10 @@ import java.sql.Statement;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 public class DatabaseConnectionTest {
     private static final String SCHEMA_SCRIPT = "/db/h2-schema.sql";
-//    private static final String DROP_TABLES_SCRIPT = "/h2-drop-tables.sql";
 
     /**
      * Sets up the database schema from a SQL script.
@@ -36,30 +37,6 @@ public class DatabaseConnectionTest {
         }
     }
 
-//    /**
-//     * Tears down the database schema by dropping all tables.
-//     *
-//     * @param connection the database connection
-//     */
-//    public static void tearDownSchema(Connection connection) {
-//        try {
-//            String dropTablesScript = readScriptFile(DROP_TABLES_SCRIPT);
-//
-//            try (Statement stmt = connection.createStatement()) {
-//                // Split the script into individual statements
-//                String[] statements = dropTablesScript.split(";");
-//
-//                for (String statement : statements) {
-//                    if (!statement.trim().isEmpty()) {
-//                        stmt.execute(statement.trim());
-//                    }
-//                }
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Failed to tear down test database schema", e);
-//        }
-//    }
-
     /**
      * Reads a SQL script from the classpath.
      *
@@ -74,6 +51,23 @@ public class DatabaseConnectionTest {
                     .collect(Collectors.joining("\n"));
         } catch (Exception e) {
             throw new RuntimeException("Failed to read SQL script: " + DatabaseConnectionTest.SCHEMA_SCRIPT, e);
+        }
+    }
+
+    public static void testData(Connection connection) {
+        try (var statement = connection.createStatement()) {
+            // Insert required library resources
+            statement.execute("INSERT INTO libraryresource (title, resourceType, numberOfCopies) \n" +
+                    "VALUES ('Book A', 'book', 5)");
+            statement.execute("INSERT INTO libraryresource (title, resourceType, numberOfCopies) \n" +
+                    "VALUES ('Book B', 'book', 3)");
+
+            statement.execute("INSERT INTO patron (patronLibraryId, username, email, phoneNumber, address) " +
+                    "VALUES ('LIB-12345678-42', 'johndoe', 'john.doe@example.com', '1234567890', '123 Main St')");
+            statement.execute("INSERT INTO patron (patronLibraryId, username, email, phoneNumber, address) " +
+                    "VALUES ('LIB-12345678-45', 'janesmith', 'jane.smith@example.com', '0987654321', '456 Elm St')");
+        } catch (Exception e) {
+            fail("Test setup failed: Unable to insert library resources" + e.getMessage());
         }
     }
 }

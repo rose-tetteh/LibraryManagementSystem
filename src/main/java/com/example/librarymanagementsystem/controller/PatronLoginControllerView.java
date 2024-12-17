@@ -4,7 +4,6 @@ import com.example.librarymanagementsystem.daos.PatronDAO;
 import com.example.librarymanagementsystem.model.Patron;
 import com.example.librarymanagementsystem.service.PatronService;
 import com.example.librarymanagementsystem.utils.ViewLoader;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,15 +16,15 @@ import java.util.Optional;
 public class PatronLoginControllerView {
 
     @FXML
-    TextField usernameField;
+    protected TextField usernameField;
     @FXML
-    TextField libraryIdField;
+    protected TextField libraryIdField;
     @FXML
-    Button loginButton;
+    protected Button loginButton;
     @FXML
-    Label errorLabel;
+    protected Label errorLabel;
 
-    PatronService patronService;
+    protected PatronService patronService;
     private final PatronDAO patronDAO;
 
     private static final String LIBRARY_ID_PATTERN = "LIB-\\d{8}-\\d{2}";
@@ -39,7 +38,7 @@ public class PatronLoginControllerView {
         loginButton.setOnAction(e -> authenticatePatron());
     }
 
-    void authenticatePatron() {
+    public void authenticatePatron() {
         String username = usernameField.getText().trim();
         String libraryId = libraryIdField.getText().trim();
 

@@ -9,6 +9,10 @@ import java.util.List;
 public class JournalService {
     private JournalDAO journalDAO;
 
+    public JournalService(JournalDAO journalDAO) {
+        this.journalDAO = journalDAO;
+    }
+
     public List<Journal> getAllJournals() {
         return journalDAO.getAllResources();
     }

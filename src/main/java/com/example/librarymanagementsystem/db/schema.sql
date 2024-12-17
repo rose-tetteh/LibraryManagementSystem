@@ -15,7 +15,7 @@ CREATE TABLE Book (
                       resourceId INT PRIMARY KEY,
                       genre VARCHAR(50),
                       author VARCHAR(255),
-                      isbn VARCHAR(255),
+                      isbn VARCHAR(255) UNIQUE,
                       publicationDate DATE,
                       statusOfBookAvailability Status NOT NULL,
                       FOREIGN KEY (resourceId) REFERENCES LibraryResource(resourceId)

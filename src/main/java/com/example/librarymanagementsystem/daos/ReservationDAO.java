@@ -28,7 +28,7 @@ public class ReservationDAO {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, reservation.getResourceId());
-            preparedStatement.setInt(2, reservation.getPatronLibraryId());
+            preparedStatement.setString(2, reservation.getPatronLibraryId());
             preparedStatement.setObject(3, "pending", Types.OTHER);
             preparedStatement.setDate(4, Date.valueOf(reservation.getReservationDate()));
             preparedStatement.setInt(5, reservationQueue.size() + 1);
@@ -101,10 +101,10 @@ public class ReservationDAO {
         return new Reservation.ReservationBuilder()
                 .reservationId(resultSet.getInt("reservationId"))
                 .resourceId(resultSet.getInt("resourceId"))
-                .patronLibraryId(resultSet.getInt("patronLibraryId"))
-                .reservationStatus(Status.valueOf(resultSet.getString("reservation_status")))
-                .reservationDate(resultSet.getDate("reservation_date").toLocalDate())
-                .queuePosition(resultSet.getInt("queue_position"))
+                .patronLibraryId(resultSet.getString("patronLibraryId"))
+                .reservationStatus(Status.valueOf(resultSet.getString("reservationStatus")))
+                .reservationDate(resultSet.getDate("reservationDate").toLocalDate())
+                .queuePosition(resultSet.getInt("queuePosition"))
                 .build();
     }
 

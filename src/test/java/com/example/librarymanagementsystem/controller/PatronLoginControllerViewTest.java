@@ -41,7 +41,7 @@ class PatronLoginControllerIntegrationTest {
      */
     @BeforeAll
     static void initToolkit() {
-        Platform.startup(() -> {});
+//        Platform.startup(() -> {});
 
         // Set up test database
         DatabaseConnection.setTestMode(true);

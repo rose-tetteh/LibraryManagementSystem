@@ -1,5 +1,7 @@
 package com.example.librarymanagementsystem.controller;
 
+import com.example.librarymanagementsystem.daos.BookDAO;
+import com.example.librarymanagementsystem.daos.JournalDAO;
 import com.example.librarymanagementsystem.model.Book;
 import com.example.librarymanagementsystem.model.Journal;
 import com.example.librarymanagementsystem.model.LibraryResource;
@@ -49,9 +51,16 @@ public class BookControllerView1 {
     @FXML
     private TableColumn<Object, String> idColumn, titleColumn, authorColumn, genreColumn, isbnColumn, publicationDateColumn, copiesColumn, statusColumn;
 
-    private final BookService bookService = new BookService();
-    private final JournalService journalService = new JournalService();
+    private BookDAO bookDAO;
+    private JournalDAO journalDAO;
+    private final BookService bookService = new BookService(bookDAO);
+    private final JournalService journalService = new JournalService(journalDAO);
     private final ObservableList<Object> data = FXCollections.observableArrayList();
+
+    public BookControllerView1(BookDAO bookDAO, JournalDAO journalDAO) {
+        this.bookDAO = bookDAO;
+        this.journalDAO = journalDAO;
+    }
 
     @FXML
     public void initialize() {
