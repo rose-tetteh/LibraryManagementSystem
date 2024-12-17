@@ -14,8 +14,8 @@ public class DatabaseConnectionTest {
 
     /**
      * Sets up the database schema from a SQL script.
-     * Split the script into individual statements
-     * @param connection the database connection
+     * Split the script into individual statements.
+     * @param connection the database connection.
      */
     public static void setupSchema(Connection connection) {
         try {

@@ -4,27 +4,28 @@ import com.example.librarymanagementsystem.daos.PatronDAO;
 import com.example.librarymanagementsystem.model.Patron;
 import com.example.librarymanagementsystem.service.PatronService;
 import com.example.librarymanagementsystem.utils.ViewLoader;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
+import java.io.IOException;
 import java.util.Optional;
 
 public class PatronLoginControllerView {
 
     @FXML
-    private TextField usernameField;
+    TextField usernameField;
     @FXML
-    private TextField libraryIdField;
+    TextField libraryIdField;
     @FXML
-    private Button loginButton;
+    Button loginButton;
     @FXML
-    private Label errorLabel;
+    Label errorLabel;
 
-    private PatronService patronService;
+    PatronService patronService;
     private final PatronDAO patronDAO;
 
     private static final String LIBRARY_ID_PATTERN = "LIB-\\d{8}-\\d{2}";
@@ -38,7 +39,7 @@ public class PatronLoginControllerView {
         loginButton.setOnAction(e -> authenticatePatron());
     }
 
-    private void authenticatePatron() {
+    void authenticatePatron() {
         String username = usernameField.getText().trim();
         String libraryId = libraryIdField.getText().trim();
 
@@ -47,8 +48,8 @@ public class PatronLoginControllerView {
             return;
         }
 
-        Optional<Patron> patron = patronService.getPatronById(libraryId);
         try {
+            Optional<Patron> patron = patronService.getPatronById(libraryId);
             if (patron.isPresent()) {
                 Patron patronValue= patron.get();
                 if (patronValue.getUsername().equals(username)) {
@@ -62,10 +63,9 @@ public class PatronLoginControllerView {
             }else {
                 errorLabel.setText("Library Id not found!");
             }
-        } catch (Exception e) {
+        } catch (RuntimeException | IOException e) {
             errorLabel.setText("An unexpected error occurred. Please try again.");
             System.err.println("Error during authentication: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
